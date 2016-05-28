@@ -1,0 +1,31 @@
+{
+  "name": "WildBeats",
+  "version": "1.0.0",
+  "description": "A Discord music bot",
+  "main": "bot.js",
+  "scripts": {
+    "test": "standard & eslint **"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SteamingMutt/WildBeats.git"
+  },
+  "author": {
+    "name": "Remco Jongschaap",
+    "email": "Hello@dougley.ovh",
+    "url": "https://dougley.ovh"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SteamingMutt/WildBeats/issues"
+  },
+  "homepage": "https://github.com/SteamingMutt/WildBeats#readme",
+  "devDependencies": {
+    "eslint": "^2.10.2",
+    "standard": "^7.1.0"
+  },
+  "dependencies": {
+    "discordie": "^0.6.4",
+    "youtube-dl": "^1.11.1"
+  }
+}

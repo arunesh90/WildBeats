@@ -1,0 +1,7 @@
+{
+  "bot": false,
+  "prefix": "!",
+  "token": "Discord API token",
+  "email": "Discord email if you arent going to use a bot account",
+  "password": "Discord password if you arent going to use a bot account"
+}
