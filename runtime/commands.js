@@ -90,6 +90,7 @@ Commands.queue = Commands.playlist = Commands.list = {
 function next (msg, bot) {
   if (list.link.length === 0) {
     shuffle(bot.VoiceConnections[0])
+    return
   }
   var encoder = bot.VoiceConnections[0].voiceConnection.createExternalEncoder({
     type: 'ffmpeg',
