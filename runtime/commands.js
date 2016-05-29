@@ -61,10 +61,14 @@ Commands.skip = {
   name: 'skip',
   help: 'Skips a song.',
   fn: function (msg, bot) {
-    list.link.shift()
-    list.requester.shift()
-    list.title.shift()
-    next(msg, bot)
+    if (list.link === undefined || list.link.length === 0) {
+      shuffle(bot.VoiceConnections[0], msg)
+    } else {
+      list.link.shift()
+      list.requester.shift()
+      list.title.shift()
+      next(msg, bot)
+    }
   }
 }
 
@@ -87,9 +91,11 @@ Commands.queue = Commands.playlist = Commands.list = {
   }
 }
 
+exports.Commands = Commands
+
 function next (msg, bot) {
-  if (list.link.length === 0) {
-    shuffle(bot.VoiceConnections[0])
+  if (list.link === undefined || list.link.length === 0) {
+    shuffle(bot.VoiceConnections[0], msg)
     return
   }
   var encoder = bot.VoiceConnections[0].voiceConnection.createExternalEncoder({
@@ -106,7 +112,8 @@ function next (msg, bot) {
     list.requester.shift()
     list.title.shift()
     if (list.link.length === 0) {
-      shuffle(bot.VoiceConnections[0])
+      list = {}
+      shuffle(bot.VoiceConnections[0], msg)
     } else {
       next(msg, bot)
     }
@@ -116,13 +123,13 @@ function next (msg, bot) {
 function join (VC, m) {
   VC.join().then((vc) => {
     m.channel.sendMessage(`Joining ${vc.voiceConnection.channel.name}`)
-    shuffle(vc)
+    shuffle(vc, m)
   })
 }
 
 function shuffle (con, m) {
   var randmus = Math.floor((Math.random() * Songs.length) + 1)
-  DL.getInfo(Songs[randmus], function (err, info) {
+  DL.getInfo(Songs[randmus], ['--skip-download'], function (err, info) {
     if (err) {
       console.error(err)
     } else if (info) {
@@ -133,6 +140,11 @@ function shuffle (con, m) {
       })
       encoder.play()
       m.channel.sendMessage(`Now playing **${info.title}**`)
+      encoder.once('end', () => {
+        if (list.link === undefined || list.link.length === 0) {
+          shuffle(con, m)
+        }
+      })
     }
   })
 }

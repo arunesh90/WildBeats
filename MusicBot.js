@@ -1,6 +1,6 @@
 process.title = 'WildBeats'
 const Discordie = require('discordie')
-const Commands = require('./runtime/commands.js')
+const Commands = require('./runtime/commands.js').Commands
 const Config = require('./config.json')
 const Event = Discordie.Events
 const client = new Discordie({
@@ -11,7 +11,7 @@ const client = new Discordie({
 client.Dispatcher.on(Event.MESSAGE_CREATE, (c) => {
   var msg = c.message
   var chunks = msg.content.split(' ')
-  var cmd = chunks[0]
+  var cmd = chunks[0].substr(2)
   var suffix = chunks.slice(1, chunks.length).join(' ')
   if (msg.content.indexOf(Config.prefix) === 0) {
     if (Commands[cmd]) {
