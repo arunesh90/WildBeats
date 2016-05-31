@@ -10,6 +10,8 @@
 
 ---
 
+### WildBeats is in alpha, quality and/or fitness of the program is not guaranteed.
+
 WildBeats is the music streaming module from [WildBeast](https://github.com/SteamingMutt/WildBeast), with added tweaks to make it function better as a private music bot.   
 Check the [Wiki](https://github.com/SteamingMutt/WildBeats/wiki) for more info!
 
