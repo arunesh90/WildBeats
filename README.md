@@ -12,8 +12,8 @@
 
 ### WildBeats is in alpha, quality and/or fitness of the program is not guaranteed.
 
-WildBeats is the music streaming module from [WildBeast](https://github.com/SteamingMutt/WildBeast), with added tweaks to make it function better as a private music bot.   
-Check the [Wiki](https://github.com/SteamingMutt/WildBeats/wiki) for more info!
+WildBeats is the music streaming module from [WildBeast](https://github.com/TheSharks/WildBeast), with added tweaks to make it function better as a private music bot.   
+Check the [Wiki](https://github.com/TheSharks/WildBeats/wiki) for more info!
 
 # Installation
 First off, make sure you have Node.js installed, you can check by running this in your terminal:

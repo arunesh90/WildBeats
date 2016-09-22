@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SteamingMutt/WildBeats.git"
+    "url": "git+https://github.com/TheSharks/WildBeats.git"
   },
   "author": {
     "name": "Remco Jongschaap",
@@ -17,9 +17,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SteamingMutt/WildBeats/issues"
+    "url": "https://github.com/TheSharks/WildBeats/issues"
   },
-  "homepage": "https://github.com/SteamingMutt/WildBeats#readme",
+  "homepage": "https://github.com/TheSharks/WildBeats#readme",
   "devDependencies": {
     "eslint": "^2.10.2",
     "standard": "^7.1.0"
