@@ -47,6 +47,7 @@ Commands.play = Commands.request = {
             }
             next(msg, bot)
           } else {
+            msg.channel.sendMessage(`Added ${info.title} to the queue.`)
             list.link.push(info.url)
             list.requester.push(msg.author.username)
             list.title.push(info.title)
@@ -80,7 +81,7 @@ Commands.queue = Commands.playlist = Commands.list = {
       var arr = []
       arr.push(`Now playing **${list.title[0]}** requested by *${list.requester[0]}*`)
       for (var i = 0; i < list.link.length; i++) {
-        arr.push(`${i++}. ${list.title[i]} requested by ${list.requester[i]}`)
+        arr.push(`${i + 1}. ${list.title[i]} requested by ${list.requester[i]}`)
         if (i === 9) {
           arr.push(`${list.title.length - 10 > 0 ? 'And about ' + list.title.length - 10 + ' more songs.' : null}`)
           break
