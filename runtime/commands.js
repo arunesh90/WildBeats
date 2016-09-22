@@ -80,7 +80,7 @@ Commands.queue = Commands.playlist = Commands.list = {
     if (list.title !== undefined) {
       var arr = []
       arr.push(`Now playing **${list.title[0]}** requested by *${list.requester[0]}*`)
-      for (var i = 0; i < list.link.length; i++) {
+      for (var i = 1; i < list.link.length; i++) {
         arr.push(`${i + 1}. ${list.title[i]} requested by ${list.requester[i]}`)
         if (i === 9) {
           arr.push(`${list.title.length - 10 > 0 ? 'And about ' + list.title.length - 10 + ' more songs.' : null}`)
