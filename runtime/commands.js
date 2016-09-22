@@ -6,7 +6,7 @@ var list = {}
 Commands.summon = Commands.voice = Commands['join-voice'] = {
   name: 'summon',
   help: 'Initiate me in a voice channel.',
-  fn: function (msg, bot, suffix) {
+  fn: function(msg, bot, suffix) {
     if (bot.VoiceConnections.length >= 1 && msg.guild.id !== bot.VoiceConnections[0].voiceConnection.guild.id) {
       for (var c of bot.VoiceConnections) {
         c.voiceConnection.disconnect()
@@ -30,11 +30,11 @@ Commands.summon = Commands.voice = Commands['join-voice'] = {
 Commands.play = Commands.request = {
   name: 'play',
   help: 'Request for something to play.',
-  fn: function (msg, bot, suffix) {
+  fn: function(msg, bot, suffix) {
     if (bot.VoiceConnections.length === 0) {
       msg.channel.sendMessage('Not connected.')
     } else {
-      DL.getInfo(suffix, function (err, info) {
+      DL.getInfo(suffix, function(err, info) {
         if (err) {
           msg.channel.sendMessage('That does not work.')
         } else if (info) {
@@ -60,7 +60,7 @@ Commands.play = Commands.request = {
 Commands.skip = {
   name: 'skip',
   help: 'Skips a song.',
-  fn: function (msg, bot) {
+  fn: function(msg, bot) {
     if (list.link === undefined || list.link.length === 0) {
       shuffle(bot.VoiceConnections[0], msg)
     } else {
@@ -75,7 +75,7 @@ Commands.skip = {
 Commands.queue = Commands.playlist = Commands.list = {
   name: 'queue',
   help: 'Gets the playlist.',
-  fn: function (msg) {
+  fn: function(msg) {
     if (list.title !== undefined) {
       var arr = []
       arr.push(`Now playing **${list.title[0]}** requested by *${list.requester[0]}*`)
@@ -93,7 +93,7 @@ Commands.queue = Commands.playlist = Commands.list = {
 
 exports.Commands = Commands
 
-function next (msg, bot) {
+function next(msg, bot) {
   if (list.link === undefined || list.link.length === 0) {
     shuffle(bot.VoiceConnections[0], msg)
     return
@@ -120,16 +120,16 @@ function next (msg, bot) {
   })
 }
 
-function join (VC, m) {
+function join(VC, m) {
   VC.join().then((vc) => {
     m.channel.sendMessage(`Joining ${vc.voiceConnection.channel.name}`)
     shuffle(vc, m)
   })
 }
 
-function shuffle (con, m) {
-  var randmus = Math.floor((Math.random() * Songs.length) + 1)
-  DL.getInfo(Songs[randmus], ['--skip-download'], function (err, info) {
+function shuffle(con, m) {
+  var randmus = Math.floor((Math.random() * Songs.length))
+  DL.getInfo(Songs[randmus], ['--skip-download'], function(err, info) {
     if (err) {
       console.error(err)
     } else if (info) {
