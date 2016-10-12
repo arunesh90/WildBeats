@@ -25,7 +25,7 @@
     "standard": "^7.1.0"
   },
   "dependencies": {
-    "discordie": "^0.6.4",
+    "discordie": "^0.8.0",
     "youtube-dl": "^1.11.1"
   }
 }
